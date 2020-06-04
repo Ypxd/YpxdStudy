@@ -1,0 +1,4 @@
+﻿  Lab_01.cpp
+E:\ВИНАПИ\Lab_01\Lab_01\Lab_01\Lab_01.cpp(8,1): warning C4005: RGB: изменение макроопределения
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(1856): message : см. предыдущее определение "RGB"
+  Lab_01.vcxproj -> E:\ВИНАПИ\Lab_01\Lab_01\Debug\Lab_01.exe

@@ -1,0 +1,184 @@
+// Lab_01.cpp : Определяет точку входа для приложения.
+//
+
+#include "framework.h"
+#include <windows.h>
+#include "lab_01.h"
+#include <iostream>
+#define RGB(r, g, b) ((COLORREF)(((BYTE)(r) | ((WORD)(g) << 8)) | ((DWORD)(BYTE)(b)) << 16)))
+int rarc = 0;
+int garc = 0;
+int barc = 255;
+
+int rbg = 0;
+int gbg = 0;
+int bbg = 255;
+
+int xarc1 = 850;
+int yarc1 = 175;
+int xarc2 = 1050;
+int yarc2 = 375;
+
+int zbg = 0;
+int zarc = 0;
+
+
+LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
+TCHAR WinName[] = _T("MainFrame");
+
+HWND hWnd;
+int WINAPI _tWinMain(HINSTANCE This,		 // Дескриптор текущего приложения 
+	HINSTANCE Prev, 	// В современных системах всегда 0 
+	LPTSTR cmd, 		// Командная строка 
+	int mode) 		// Режим отображения окна
+{	// Дескриптор главного окна программы 
+	MSG msg; 		// Структура для хранения сообщения 
+	WNDCLASS wc; 	// Класс окна
+	// Определение класса окна 
+	wc.hInstance = This;
+	wc.lpszClassName = WinName; 				// Имя класса окна 
+	wc.lpfnWndProc = WndProc; 					// Функция окна 
+	wc.style = CS_HREDRAW | CS_VREDRAW; 			// Стиль окна 
+	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION); 		// Стандартная иконка 
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW); 		// Стандартный курсор 
+	wc.lpszMenuName = NULL; 					// Нет меню 
+	wc.cbClsExtra = 0; 						// Нет дополнительных данных класса 
+	wc.cbWndExtra = 0; 						// Нет дополнительных данных окна 
+	//wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); 	// Заполнение окна белым цветом 
+	wc.hbrBackground = (HBRUSH)(CreateSolidBrush(RGB(205, 133, 63));
+
+	// Регистрация класса о		кна
+	if (!RegisterClass(&wc)) return 0;
+
+	// Создание окна 
+	hWnd = CreateWindow(WinName,			// Имя класса окна 
+		_T("Каркас Windows-приложения"), 		// Заголовок окна 
+		WS_OVERLAPPEDWINDOW, 		// Стиль окна 
+		CW_USEDEFAULT,				// x 
+		CW_USEDEFAULT, 				// y	 Размеры окна 
+		CW_USEDEFAULT, 				// width 
+		CW_USEDEFAULT, 				// Height 
+		HWND_DESKTOP, 				// Дескриптор родительского окна 
+		NULL, 						// Нет меню 
+		This, 						// Дескриптор приложения 
+		NULL); 					// Дополнительной информации нет 
+
+	ShowWindow(hWnd, mode); 				// Показать окно
+
+	// Цикл обработки сообщений 
+	while (GetMessage(&msg, NULL, 0, 0))
+	{
+		TranslateMessage(&msg); 		// Функция трансляции кодов нажатой клавиши 
+		DispatchMessage(&msg); 		// Посылает сообщение функции WndProc() 
+	}
+
+	return 0;
+}
+
+// Оконная функция вызывается операционной системой
+// и получает сообщения из очереди для данного приложения
+
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	HDC hdc;
+	PAINTSTRUCT ps;	
+	HPEN hPenOld;
+	HPEN hEllipsePen;
+	switch (message)		 // Обработчик сообщений
+	{
+		case WM_LBUTTONUP:
+		{
+			/*
+			WNDCLASS wc;
+			HDC hdc = GetDC(hWnd);
+			//bg
+			COLORREF qEllipseColor = (HS_VERTICAL, RGB(rbg, gbg, bbg);
+			hEllipsePen = CreatePen(PS_SOLID, 10000, qEllipseColor);
+			hPenOld = (HPEN)SelectObject(hdc, hEllipsePen);
+			Rectangle(hdc, 0, 0, 5000, 5000);
+			gbg = zbg;
+			if (zbg != 200)
+			{
+				zbg += 5;
+			}
+			SelectObject(hdc, hPenOld);
+			DeleteObject(hEllipsePen);
+			//1arc
+			COLORREF qEllipseColor1 = (HS_VERTICAL, RGB(255, 255, 0);
+			hEllipsePen = CreatePen(PS_SOLID, 200, qEllipseColor1);
+			hPenOld = (HPEN)SelectObject(hdc, hEllipsePen);
+			Arc(hdc, 450, 175, 650, 375, 0, 0, 0, 0);
+			SelectObject(hdc, hPenOld);
+			DeleteObject(hEllipsePen);
+			//2arc
+			COLORREF qEllipseColor2 = (HS_VERTICAL, RGB(rarc, garc, barc);
+			hEllipsePen = CreatePen(PS_SOLID, 200, qEllipseColor2);
+			hPenOld = (HPEN)SelectObject(hdc, hEllipsePen);
+			Arc(hdc, xarc1, yarc1, xarc2, yarc2, 0, 0, 0, 0);
+			rarc = 0;
+			garc = zarc;
+			if (zarc != 200)
+			{
+				zarc += 5;
+			}
+			barc = 255;
+			if (xarc1 != 450)
+			{
+				xarc1 -= 10;
+				xarc2 -= 10;
+			}
+			SelectObject(hdc, hPenOld);
+			DeleteObject(hEllipsePen);
+			*/
+
+			//TextOut(hdc, 10, 10, L"Сообщение WM_PAINT", 10);
+			/*LOGFONT lf;
+			lf.lfHeight = 8;
+			lf.lfWidth = 0;
+			lf.lfEscapement = 45;
+			lf.lfOrientation = 0;
+			lf.lfWeight = FW_NORMAL;
+			lf.lfItalic = 0;
+			lf.lfUnderline = 0;
+			lf.lfStrikeOut = 0;
+			lf.lfCharSet = ANSI_CHARSET;
+			lf.lfOutPrecision = OUT_DEFAULT_PRECIS;
+			lf.lfClipPrecision = CLIP_DEFAULT_PRECIS;
+			lf.lfQuality = PROOF_QUALITY;
+			lf.lfPitchAndFamily = VARIABLE_PITCH | FF_ROMAN;
+			strcpy(lf.lfFaceName, "LF");
+			*/
+			WNDCLASS wc;
+			HDC hdc = GetDC(hWnd);
+			COLORREF qEllipseColor = (HS_VERTICAL, RGB(0, 0, 255);
+			hEllipsePen = CreatePen(PS_SOLID, 10000, qEllipseColor);
+			hPenOld = (HPEN)SelectObject(hdc, hEllipsePen);
+			RECT rect;
+			HFONT hFont;
+			hFont = CreateFont(28, 0, 450, 0, FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
+				CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Times New Roman"));
+			SelectObject(hdc, hFont);
+			SetRect(&rect, 20, 690, 120, 790);
+			SetBkColor(hdc, RGB(205, 133, 63);
+			SetTextColor(hdc, RGB(0, 0, 0);
+			DrawText(hdc, TEXT("Артем Калашников ИУ5 43-Б "), -1, &rect, DT_NOCLIP);
+			DeleteObject(hFont);
+			EndPage(hdc);
+			break;
+		}
+
+		case WM_RBUTTONUP:
+		{
+			ShowWindow(hWnd, SW_MINIMIZE);
+			break;
+		}
+
+		case WM_DESTROY:
+			PostQuitMessage(0);
+			break; 			// Завершение программы 
+		default: 			// Обработка сообщения по умолчанию 
+			return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
+}

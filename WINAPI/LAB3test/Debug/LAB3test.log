@@ -1,0 +1,6 @@
+﻿  LAB3test.cpp
+E:\ВИНАПИ\LAB3test\LAB3test.cpp(14,1): warning C4005: RGB: изменение макроопределения
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(1856): message : см. предыдущее определение "RGB"
+E:\ВИНАПИ\LAB3test\LAB3test.cpp(63,16): warning C4229: устаревший элемент: пропуск модификаторов для данных
+E:\ВИНАПИ\LAB3test\LAB3test.cpp(63,15): warning C4101: a: неиспользованная локальная переменная
+  LAB3test.vcxproj -> E:\ВИНАПИ\LAB3test\Debug\LAB3test.exe
