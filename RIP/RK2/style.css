@@ -1,0 +1,39 @@
+body {
+		background: #2F4F4F;
+		color: #FFFFFF;
+    font-weight: bold;
+    font-size: 25px;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-position: left top;
+	}
+
+ .lux { 
+    width: 600px;
+    border: 1px solid #00FF00;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 3px solid #2F4F4F;
+   }
+   .lux th {
+    background: #000000;
+    color: white; 
+   }
+   .lux td, .lux th { 
+    border-bottom: 1px solid #FFFFFF;
+    border: 2px solid #FFFFFF;
+    text-align: center;
+
+   }
+   .lux td, .lux th {
+    padding: 4px;
+   }
+
+.lux tr:nth-child(odd){
+  background: #708090;
+}
+ 
+.lux tr:nth-child(even){
+  background: #808000;
+}
